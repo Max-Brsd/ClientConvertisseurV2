@@ -1,4 +1,5 @@
-﻿using ClientConvertisseurV2.ViewModels;
+﻿using ClientConvertisseurV2.Services;
+using ClientConvertisseurV2.ViewModels;
 using ClientConvertisseurV2.Views;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -47,9 +48,17 @@ namespace ClientConvertisseurV2
             Frame rootFrame = new Frame();
             this.m_window.Content = rootFrame;
             m_window.Activate();
+            MainRoot = m_window.Content as FrameworkElement;
+            this.UnhandledException += App_UnhandledException;
             rootFrame.Navigate(typeof(ConvertisseurEuroPage));
         }
 
         private Window m_window;
+        public static FrameworkElement MainRoot { get; private set; } 
+        private async void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            e.Handled = true;
+            await DialogService.OpenDialog(App.MainRoot.XamlRoot, "Erreur", e.Message, "OK");
+        }
     }
 }

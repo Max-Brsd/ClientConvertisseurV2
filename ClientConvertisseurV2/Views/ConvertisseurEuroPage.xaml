@@ -10,12 +10,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <RelativePanel>
-        <TextBlock x:Name="First" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10">Montant en euros</TextBlock>
-        <TextBox x:Name="txtMontantEuros" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="First" Text="{Binding MontantEuros, Mode=TwoWay}"></TextBox>
-        <TextBlock x:Name="Third" RelativePanel.AlignHorizontalCenterWithPanel="True"  RelativePanel.Below="txtMontantEuros" Margin="10">Devise</TextBlock>
-        <ComboBox x:Name="CbxDevise" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Third" Margin="10" ItemsSource="{Binding Devises}" SelectedValuePath="Id" DisplayMemberPath="NomDevise" SelectedItem="{Binding DeviseSelected, Mode=TwoWay}"/>
-        <Button x:Name="Five" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="CbxDevise" Margin="10" Command="{Binding BtnSetConversion}">Convertir</Button>
-        <TextBlock x:Name="Six" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Five" Margin="10">Montant en devises</TextBlock>
-        <TextBox x:Name="Seven" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Six" Margin="10" IsReadOnly="True" Text="{Binding MontantDevise, Mode=OneWay}"></TextBox>
+        <TextBlock x:Name="First" RelativePanel.AlignHorizontalCenterWithPanel="True" Margin="10,30,10,0" Width="200">Montant en euros</TextBlock>
+        <TextBox x:Name="txtMontantEuros" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="First" Text="{Binding MontantEuros, Mode=TwoWay}" Width="200" Margin="10"></TextBox>
+        <TextBlock x:Name="Third" RelativePanel.AlignHorizontalCenterWithPanel="True"  RelativePanel.Below="txtMontantEuros" Width="200" Margin="10">Devise</TextBlock>
+        <ComboBox x:Name="CbxDevise" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Third" Width="200" Margin="10" ItemsSource="{Binding Devises}" SelectedValuePath="Id" DisplayMemberPath="NomDevise" SelectedItem="{Binding DeviseSelected, Mode=TwoWay}"/>
+        <Button x:Name="Five" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="CbxDevise" Width="200" Margin="10" Command="{Binding BtnSetConversion}">Convertir</Button>
+        <TextBlock x:Name="Six" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Five" Width="200" Margin="10">Montant en devises</TextBlock>
+        <TextBox x:Name="Seven" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.Below="Six" Width="200" Margin="10" IsReadOnly="True" Text="{Binding MontantDevise, Mode=OneWay}"></TextBox>
     </RelativePanel>
 </Page>

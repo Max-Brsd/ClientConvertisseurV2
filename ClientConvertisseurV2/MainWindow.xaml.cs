@@ -26,6 +26,7 @@ namespace ClientConvertisseurV2
         public MainWindow()
         {
             this.InitializeComponent();
+            this.AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(600, 100, 500, 500));
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
