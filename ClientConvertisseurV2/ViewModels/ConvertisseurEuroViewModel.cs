@@ -22,16 +22,17 @@ namespace ClientConvertisseurV2.ViewModels
         }
 
         public IRelayCommand BtnSetConversion { get; }
+        public IRelayCommand BtnSetConversionInEuro { get; }
 
         private WSService wSService;
 
-        private string montantEuros;
-        public string MontantEuros
+        private string montantSaisie;
+        public string MontantSaisie
         {
-            get { return montantEuros; }
+            get { return montantSaisie; }
             set
             {
-                montantEuros = value;
+                montantSaisie = value;
                 OnPropertyChanged();
             }
         }
@@ -64,6 +65,7 @@ namespace ClientConvertisseurV2.ViewModels
             wSService = WSService.GetInstance();
             ActionGetDataSync();
             BtnSetConversion = new RelayCommand(ActionSetConversion);
+            BtnSetConversionInEuro = new RelayCommand(ActionSetConversionInEuro);
         }
 
         private void ActionSetConversion()
@@ -75,7 +77,25 @@ namespace ClientConvertisseurV2.ViewModels
             var result = 0.0;
             try
             {
-                result = Convert.ToDouble(montantEuros) * deviseSelected.Taux;
+                result = Convert.ToDouble(MontantSaisie) * deviseSelected.Taux;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Le montant passé n'est pas un nombre décimal !");
+            }
+            MontantDevise = Convert.ToString(result);
+        }
+
+        private void ActionSetConversionInEuro()
+        {
+            if ((deviseSelected == null))
+            {
+                throw new Exception("Il faut choisir une devise depuis laquelle convertir!");
+            }
+            var result = 0.0;
+            try
+            {
+                result = Convert.ToDouble(MontantSaisie) / deviseSelected.Taux;
             }
             catch (Exception ex)
             {
